@@ -32,6 +32,7 @@ public class AList<T> implements ListInterface<T> {
 	 */
 	public void checkCapacity(int capacity) {
 		if (capacity > MAX_CAPACITY) {
+			System.out.printf("Over max capacity!%n");
 			throw new IllegalArgumentException();
 		}
 	}
@@ -43,7 +44,7 @@ public class AList<T> implements ListInterface<T> {
 		if(isFull()) {
 			capacity *= 2;
 			checkCapacity(capacity);
-			list = (T[]) Arrays.copyOf(list, numberOfEntries);
+			list = (T[]) Arrays.copyOf(list, capacity);
 		}
 	}
 	

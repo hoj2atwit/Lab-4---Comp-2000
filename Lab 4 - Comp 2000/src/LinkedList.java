@@ -40,13 +40,14 @@ public class LinkedList<T> implements ListInterface<T> {
 	 */
 	@Override
 	public void add(T newEntry) {
-		numberOfEntries++;
 		Node<T> toInsert = new Node<T>(newEntry);
 		if (isEmpty()) {
 			firstNode = toInsert;
-		} else {
+			numberOfEntries++;
+		} else {			
 			Node<T> curr = getLast();
 			curr.setNext(toInsert);
+			numberOfEntries++;
 		}
 	}
 
@@ -87,12 +88,14 @@ public class LinkedList<T> implements ListInterface<T> {
 		if (isEmpty()) {
 			throw new NullPointerException();
 		}
-		numberOfEntries--;
+		//numberOfEntries--;
 		Node<T> before = getNodeAt(givenPosition - 1);
 		Node<T> toRemove = before.getNext();
 		assert (toRemove != null);
 		before.setNext(toRemove.getNext());
+		numberOfEntries--;
 		return toRemove.getData();
+		
 	}
 
 	/**
