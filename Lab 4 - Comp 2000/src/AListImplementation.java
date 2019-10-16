@@ -2,7 +2,7 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.util.Scanner; 
 
-public class ArrayImplementation {
+public class AListImplementation {
 
 	public static void main(String[] args) {
 		try {
