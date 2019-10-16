@@ -89,11 +89,18 @@ public class LinkedList<T> implements ListInterface<T> {
 			throw new NullPointerException();
 		}
 		//numberOfEntries--;
-		Node<T> before = getNodeAt(givenPosition - 1);
-		Node<T> toRemove = before.getNext();
-		assert (toRemove != null);
-		before.setNext(toRemove.getNext());
-		numberOfEntries--;
+		Node<T> toRemove;
+		if (givenPosition == 0) {
+			toRemove = firstNode;
+			firstNode = firstNode.getNext();
+			numberOfEntries--;
+		} else {
+			Node<T> before = getNodeAt(givenPosition - 1);
+			toRemove = before.getNext();
+			assert (toRemove != null);
+			before.setNext(toRemove.getNext());
+			numberOfEntries--;
+		}
 		return toRemove.getData();
 		
 	}

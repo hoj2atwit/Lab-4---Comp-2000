@@ -2,12 +2,12 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.util.Scanner; 
 
-public class AListImplementation {
+public class LinkedListImplementation {
 
 	public static void main(String[] args) {
 		try {
 			File file = new File("foxandcat.txt");
-			AList<String> list = toList(file);							// Creates an AList of words in file
+			LinkedList<String> list = toList(file);							// Creates an AList of words in file
 			String temp;
 			
 			filterWords(list);											// filters words starting w/ 'a' and 'A', replaces "fox" with "elephant", replaces "Fox" with "Elephant"
@@ -19,7 +19,7 @@ public class AListImplementation {
 				}
 			}
 						
-			File writeTo = new File("foxandcat(AList).txt");			// Creates file for the list to be written to
+			File writeTo = new File("foxandcat(LinkedList).txt");			// Creates file for the list to be written to
 			PrintWriter writer = new PrintWriter(writeTo);
 
 			for (int i = 0; i < list.getLength(); i++) {				// Writes all words onto the file, line per word
@@ -44,14 +44,13 @@ public class AListImplementation {
 	 * @param file
 	 * @return
 	 */
-	public static AList<String> toList(File file) throws Exception{
-		AList<String> toReturn = new AList();
+	public static LinkedList<String> toList(File file) throws Exception{
+		LinkedList<String> toReturn = new LinkedList();
 		Scanner s = new Scanner(file);
-		String temp;
-		String temp2;
 		while (s.hasNext()) {
 			toReturn.add(removePunctuationMark(s.next()));
 		}		
+		s.close();
 		return toReturn;
 	}
 	
@@ -76,7 +75,7 @@ public class AListImplementation {
 	 * Removes words starting with 'a' or 'A', replaces "fox" with "elephant", replaces "Fox" with "Elephant"
 	 * @param list
 	 */
-	public static void filterWords(AList<String> list) {
+	public static void filterWords(LinkedList<String> list) {
 		String temp;
 		for (int i = 0; i < list.getLength(); i++) {
 			temp = list.getEntry(i);
